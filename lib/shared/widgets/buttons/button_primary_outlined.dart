@@ -5,7 +5,7 @@ import 'package:flutter_multikart_v2/shared/widgets/others/loading_indicator.dar
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class ButtonPrimary extends StatefulWidget {
+class ButtonPrimaryOutlined extends StatefulWidget {
   final Function()? onTap;
   final String label;
   final Widget? prefixIcon;
@@ -29,7 +29,7 @@ class ButtonPrimary extends StatefulWidget {
   final Color? loadingColor;
   final TextStyle? textStyle;
 
-  const ButtonPrimary({
+  const ButtonPrimaryOutlined({
     Key? key,
     this.onTap,
     this.label = 'Button',
@@ -56,10 +56,10 @@ class ButtonPrimary extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<ButtonPrimary> createState() => _ButtonPrimaryState();
+  State<ButtonPrimaryOutlined> createState() => _ButtonPrimaryOutlinedState();
 }
 
-class _ButtonPrimaryState extends State<ButtonPrimary> {
+class _ButtonPrimaryOutlinedState extends State<ButtonPrimaryOutlined> {
   _align() {
     switch (widget.align) {
       case ButtonAlign.spaceBetween:

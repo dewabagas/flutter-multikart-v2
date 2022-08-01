@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_multikart_v2/shared/widgets/buttons/button_primary.dart';
 import 'package:get/get.dart';
 import 'package:flutter_multikart_v2/shared/shared.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,20 +11,11 @@ class PageIntroduction extends StatefulWidget {
 }
 
 class PageIntroductionState extends State<PageIntroduction> {
-  int currentIndexPage = 0;
-  int? pageLength;
   final introKey = GlobalKey<IntroductionScreenState>();
-
-  var titles = [
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry.This is simply text ",
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry.This is simply text  ",
-  ];
 
   @override
   void initState() {
     super.initState();
-    currentIndexPage = 0;
-    pageLength = 2;
   }
 
   @override
@@ -36,114 +28,110 @@ class PageIntroductionState extends State<PageIntroduction> {
           showSkipButton: false,
           showDoneButton: false,
           showNextButton: false,
-          controlsPadding: EdgeInsets.symmetric(vertical: Insets.xxl),
+          controlsPosition: Position(left: 0, right: 0, bottom: 145),
           dotsDecorator: DotsDecorator(
-              size: Size.square(8.w),
-              activeSize: Size(16.w, 8.w),
+              size: Size.square(4.w),
+              activeSize: Size(16.w, 4.w),
               activeColor: ColorConstants.greyLight,
+              spacing: const EdgeInsets.symmetric(horizontal: 3.0),
               color: ColorConstants.greyLight,
               activeShape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(24.w))),
           pages: [
             PageViewModel(
-              title: IntroductionStrings.IntroTitleOne,
-              body: IntroductionStrings.IntroSubtitleOne,
-              image: Align(
-                alignment: Alignment.bottomCenter,
-                child: Image.asset(
-                  Introduction.introOne,
-                  width: Get.width * 0.7,
-                  height: Get.width * 0.7,
+                title: IntroductionStrings.IntroTitleOne,
+                body: IntroductionStrings.IntroSubtitleOne,
+                image: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Image.asset(
+                    Introduction.introOne,
+                    width: Get.width * 0.7,
+                    height: Get.width * 0.7,
+                  ),
                 ),
-              ),
-              decoration: PageDecoration(
-                bodyTextStyle: TextStyles.introSubtitle,
-                titleTextStyle: TextStyles.introTitle,
-                imageFlex: 9,
-                bodyFlex: 5,
-                bodyPadding: EdgeInsets.zero,
-              ),
-              footer: Padding(
-                padding: EdgeInsets.symmetric(horizontal: Insets.xxl),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    // Expanded(
-                    //   child: ButtonPrimaryOutline(
-                    //     label: "Lewati",
-                    //     color: Colors.transparent,
-                    //     outlineColor: Colors.white,
-                    //     textColor: Colors.white,
-                    //     onTap: () {},
-                    //   ),
-                    // ),
-                    // SizedBox(width: Insets.lg),
-                    // Expanded(
-                    //   child: ButtonPrimaryOutline(
-                    //     label: "Lanjutkan",
-                    //     color: Colors.white,
-                    //     outlineColor: Colors.white,
-                    //     onTap: () {
-                    //       introKey.currentState!.animateScroll(1);
-                    //     },
-                    //   ),
-                    // )
-                  ],
+                decoration: PageDecoration(
+                  bodyTextStyle: TextStyles.introSubtitle,
+                  titleTextStyle: TextStyles.introTitle,
+                  imageFlex: 9,
+                  bodyFlex: 6,
+                  bodyPadding: EdgeInsets.zero,
                 ),
-              ),
-            ),
+                footer: BottomComponent()),
+            PageViewModel(
+                title: IntroductionStrings.IntroTitleTwo,
+                body: IntroductionStrings.IntroSubtitleTwo,
+                image: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Image.asset(
+                    Introduction.introTwo,
+                    width: Get.width * 0.7,
+                    height: Get.width * 0.7,
+                  ),
+                ),
+                decoration: PageDecoration(
+                  bodyTextStyle: TextStyles.introSubtitle,
+                  titleTextStyle: TextStyles.introTitle,
+                  imageFlex: 9,
+                  bodyFlex: 6,
+                  bodyPadding: EdgeInsets.zero,
+                ),
+                footer: BottomComponent()),
+            PageViewModel(
+                title: IntroductionStrings.IntroTitleThree,
+                body: IntroductionStrings.IntroSubtitleThree,
+                image: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Image.asset(
+                    Introduction.introThree,
+                    width: Get.width * 0.7,
+                    height: Get.width * 0.7,
+                  ),
+                ),
+                decoration: PageDecoration(
+                  bodyTextStyle: TextStyles.introSubtitle,
+                  titleTextStyle: TextStyles.introTitle,
+                  imageFlex: 9,
+                  bodyFlex: 6,
+                  bodyPadding: EdgeInsets.zero,
+                ),
+                footer: BottomComponent()),
           ],
         ));
   }
 }
 
-class WalkThrough extends StatelessWidget {
-  final String textContent;
-  final String title;
-  final String subtitle;
-
-  WalkThrough(
-      {Key? key,
-      required this.textContent,
-      required this.title,
-      required this.subtitle})
-      : super(key: key);
-
-  @override
+class BottomComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 269.w,
-      alignment: Alignment.topCenter,
-      child: Column(children: <Widget>[
-        Padding(
-          padding: EdgeInsets.only(bottom: 28.h),
-          child:
-              Image(image: AssetImage(textContent), height: screenHeight / 2.5),
-        ),
-        Column(
-          children: [
-            Container(
-              child: Center(
-                  child: Text(
-                title,
-                style: TextStyles.introTitle,
-                textAlign: TextAlign.center,
-              )),
-            ),
-            SizedBox(height: 5.h),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 24.w),
-              child: Center(
-                  child: Text(
-                subtitle,
-                style: TextStyles.introSubtitle,
-                textAlign: TextAlign.center,
-              )),
-            ),
-          ],
-        ),
-      ]),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 0),
+      child: Column(
+        children: [
+          ButtonPrimary(
+            label: "START SHOPPING",
+            color: Colors.transparent,
+            textColor: Colors.white,
+            type: ButtonType.flat,
+            buttonSize: ButtonSize.s,
+            width: 345.0.w,
+            textStyle: TextStyles.button.copyWith(
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w400,
+                color: Colors.white),
+            onTap: () {},
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Already have an account? ',
+                style: TextStyles.subtitle2,
+              ),
+              Text('Sign in', style: TextStyles.subtitle2)
+            ],
+          )
+        ],
+      ),
     );
   }
 }

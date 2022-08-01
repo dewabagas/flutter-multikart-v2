@@ -37,6 +37,17 @@ class TextStyles {
         fontWeight: FontWeight.bold,
         fontSize: FontSizes.s16,
       );
+
+  static TextStyle get subtitle2 => lato.copyWith(
+        fontWeight: FontWeight.w500,
+        fontSize: 14.sp,
+        color: ColorConstants.greySubtitle
+      );
+
+  static TextStyle get button => lato.copyWith(
+        fontWeight: FontWeight.w600,
+        fontSize: FontSizes.s12,
+      );
 }
 
 class Insets {
@@ -86,4 +97,11 @@ class FontSizes {
   static double get s40 => 40.w;
   static double get s48 => 48.w;
   static double get s56 => 56.w;
+}
+
+class Strokes {
+  static const double xthin = 0.7;
+  static const double thin = 1;
+  static const double med = 2;
+  static const double thick = 4;
 }

@@ -11,6 +11,7 @@ class ColorConstants {
   static Color borderColor = hexToColor("#DDDDDD");
 
   static Color greyLight = hexToColor("#EDEFF4");
+  static Color greySubtitle = hexToColor("#777777");
 
   static Color secondaryLightColor = hexToColor("#E4E9F2");
   static Color secondaryDarkColor = hexToColor("#404040");
@@ -32,6 +33,8 @@ class ColorConstants {
   static Color titleTextColorDark = hexToColor("#FFFFFF");
 
   static Color shadowColor = hexToColor("#364564");
+
+  static const disableColor = Color(0xFFE5E5E5);
 }
 
 Color hexToColor(String hex) {
@@ -43,11 +46,21 @@ Color hexToColor(String hex) {
         (hex.length == 7 ? 0xff000000 : 0x00000000),
   );
 }
+
 class Gradients {
-  static LinearGradient gradientPrimaryTop = LinearGradient(
+  static const LinearGradient gradientPrimaryTop = LinearGradient(
     colors: [
-      ColorConstants.primaryColor,
-      ColorConstants.accentLightColor,
+      Color(0xFFFF4C3B),
+      Color(0xFFFF6054),
+    ],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  );
+
+  static const LinearGradient gradientDisabled = LinearGradient(
+    colors: [
+      ColorConstants.disableColor,
+      ColorConstants.disableColor,
     ],
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
